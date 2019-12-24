@@ -12,25 +12,19 @@
 */
 
 Route::get('/', function() {
-    return "Respon ini diterima dari path / dengan metode GET";
+    return 'Respon ini diterima dari path / dengan metode GET';
 });
 
-Route::get('/books', function(Request $request) {
-    return "Router ini nantinya akan digunakan untuk mengambil semua data buku. Closure method pada router ini juga menerima satu parameter yaitu $request yang digunakan untuk menampung query paramater";
-});
+Route::get('/books/add', 'BookController@create');
 
-Route::post('/books', function() {
-    return "Router ini nantinya akan digunakan untuk mencipatakan data buku yang baru";
-});
+Route::get('/books', 'BookController@index');
 
-Route::get('/books/{id}', function($id) {
-    return "Router ini nantinya akan digunakan untuk mengambil satu data buku dengan id=" . $id;
-});
+Route::post('/books', 'BookController@store');
 
-Route::put('/books/{id}', function($id) {
-    return "Router ini nantinya akan digunakan untuk mengubah data buku dengan id=" . $id;
-});
+Route::get('/books/{id}', 'BookController@show');
 
-Route::delete('/books/{id}', function($id) {
-    return "Router ini nantinya digunakan untuk menghapus data buku dengan id=" . $id;
-});
+Route::put('/books/{id}', 'BookController@update');
+
+Route::delete('/books/{id}', 'BookController@destroy');
+
+Route::get('/books/edit/{id}', 'BookController@edit');
