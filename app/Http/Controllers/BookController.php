@@ -13,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return "Method ini nantinya akan digunakan untuk mengambil semua data buku. Closure method pada router ini juga menerima satu parameter yaitu $request yang digunakan untuk menampung query paramater";
+        return "Method ini nantinya akan digunakan untuk mengambil semua data buku";
     }
 
     /**
