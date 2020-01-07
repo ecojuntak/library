@@ -19,10 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('publication');
             $table->unsignedInteger('year');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            $table->foreign("user_id")->references('id')->on('users');
         });
     }
 
