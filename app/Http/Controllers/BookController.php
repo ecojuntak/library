@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -9,11 +10,12 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Book[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        return "Method ini nantinya akan digunakan untuk mengambil semua data buku";
+        $books = Book::all();
+        return $books;
     }
 
     /**
@@ -34,7 +36,14 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        return "Method ini nantinya akan digunakan untuk mencipatakan data buku yang baru";
+        $book = new Book();
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->publication = $request->publication;
+        $book->year = $request->year;
+        $book->save();
+
+        return $book;
     }
 
     /**
@@ -45,7 +54,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return "Method ini nantinya akan digunakan untuk mengambil satu data buku dengan id=" . $id;
+        $book = Book::find($id);
+        return $book;
     }
 
     /**
@@ -68,7 +78,14 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "Method ini nantinya akan digunakan untuk mengubah data buku dengan id=" . $id;
+        $book = Book::find($id);
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->publication = $request->publication;
+        $book->year = $request->year;
+        $book->update();
+
+        return $book;
     }
 
     /**
@@ -79,6 +96,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        return "Method ini nantinya digunakan untuk menghapus data buku dengan id=" . $id;
+        Book::find($id)->delete();
+        return "book with id " . $id . " deleted";
     }
 }
