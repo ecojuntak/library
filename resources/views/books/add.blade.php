@@ -12,6 +12,7 @@
     <h3> Please fill the book detail </h3>
     <div>
         <form method="post" action="{{ url("/books") }}">
+            {{ csrf_field() }}
             <div>
                 <label>
                     Title
