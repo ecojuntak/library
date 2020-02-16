@@ -15,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return $books;
+        return view('books.index')->with("books", $books);
     }
 
     /**
@@ -25,7 +25,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return "Method ini nantinya akan digunakan untuk menampilkan form untuk menambah data buku";
+        return view("books.add");
     }
 
     /**
@@ -43,7 +43,7 @@ class BookController extends Controller
         $book->year = $request->year;
         $book->save();
 
-        return $book;
+        return redirect("/books");
     }
 
     /**
@@ -55,7 +55,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return $book;
+        return view("books.detail")->with("book", $book);
     }
 
     /**
@@ -66,7 +66,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        return "Method ini nantinya akan digunakan untuk menampilkan form untuk mengubah data buku dengan id=" . $id;
+        $book = Book::find($id);
+        return view("books.edit")->with("book", $book);
     }
 
     /**
@@ -85,7 +86,7 @@ class BookController extends Controller
         $book->year = $request->year;
         $book->update();
 
-        return $book;
+        return redirect("/books/" . $id );
     }
 
     /**
@@ -98,6 +99,6 @@ class BookController extends Controller
     {
             $book = Book::find($id);
             $book->delete();
-            return "book with id " . $id . " deleted";
+            return redirect("/books");
     }
 }
