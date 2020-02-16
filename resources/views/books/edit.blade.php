@@ -14,6 +14,7 @@
     <h3> Please change the data you want yo update </h3>
     <div>
         <form method="post" action="{{ url("/books", $book->id) }}">
+            {{ method_field('PUT') }}
             <div>
                 <label>
                     Title
