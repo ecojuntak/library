@@ -1,13 +1,10 @@
-<html>
-<head>
-    <title>Book Detail</title>
-</head>
+@extends('layouts.app')
 
-<body>
-<div style="background: #388BF2; font-size: 24px; color: white">
-    Simple library app
-</div>
+@section('title')
+    Book Detail
+@endsection
 
+@section('content')
 <div style="margin-top: 20px; margin-bottom: 20px">
     <a href="/books"> Book list </a>
 
@@ -17,9 +14,4 @@
     <p> Author <b> {{ $book->author }} </b> </p>
     <p> Year <b> {{ $book->year }} </b> </p>
 </div>
-
-<div style="background: #31B057; font-size: 20px; color: white">
-    Created with love and willingness to learn
-</div>
-</body>
-</html>
+@endsection
